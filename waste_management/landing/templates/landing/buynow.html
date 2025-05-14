@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Now</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: black; /* Set background to black */
+            color: white; /* Set text color to white */
+        }
+        .card {
+            background-color: #333; /* Dark background for the card */
+            color: white; /* White text for the card */
+        }
+        .form-control {
+            background-color: #222; /* Dark background for input fields */
+            color: white; /* White text for input fields */
+            border: 1px solid #555; /* Subtle border for input fields */
+        }
+        .form-control:focus {
+            background-color: #333; /* Slightly lighter background on focus */
+            color: white;
+            border-color: #007bff; /* Blue border on focus */
+            box-shadow: none;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .form-text {
+            color: #ccc; /* Subtle text for helper messages */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Buy Now</h1>
+        <div class="card mx-auto" style="max-width: 500px;">
+            <div class="card-body">
+                <h5 class="card-title">{{ product_name }}</h5>
+                <p class="card-text"><strong>Type:</strong> {{ product_type }}</p>
+                <p class="card-text"><strong>Price:</strong> ₹{{ price }}</p>
+                <p class="card-text"><strong>Stock:</strong> {{ stock }} units</p>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="quantity" class="form-label">Quantity</label>
+                        <input type="number" name="quantity" id="quantity" class="form-control" min="1" max="{{ stock }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" name="phone" id="phone" class="form-control" pattern="\+91[0-9]{10}" placeholder="Enter your phone number (e.g., +919876543210)" required>
+                        <small class="form-text">Phone number must start with +91 and contain 10 digits.</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address</label>
+                        <textarea name="address" id="address" class="form-control" rows="3" placeholder="Enter your address" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="city" class="form-label">City</label>
+                        <input type="text" name="city" id="city" class="form-control" placeholder="Enter your city" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="state" class="form-label">State</label>
+                        <input type="text" name="state" id="state" class="form-control" placeholder="Enter your state" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="payment" class="form-label">Payment Option</label>
+                        <select name="payment" id="payment" class="form-control" required>
+                            <option value="cash_on_delivery">Cash on Delivery</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Confirm Purchase</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

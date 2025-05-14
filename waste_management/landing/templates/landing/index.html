@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Management System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        /* Full-screen background image with overlay */
+        .landing-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-image: url('https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_640.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Adjust opacity here */
+            z-index: 1;
+        }
+
+        .landing-text {
+            position: relative;
+            z-index: 2;
+            color: white;
+            font-size: 4rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .scroll-section {
+            padding: 60px 0;
+        }
+
+        .square-button {
+            height: 100px;
+        }
+
+        /* Transparent navbar with shadow */
+        .navbar {
+            background-color: transparent !important;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); /* Add shadow */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Make navbar background solid on scroll */
+        .navbar.scrolled {
+            background-color: rgba(0, 0, 0, 0.8) !important;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Increase shadow intensity on scroll */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">OneEarthFarm</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                
+                <li class="nav-item">
+                    <!-- Updated button with correct URL -->
+                    <a class="nav-link btn btn-primary text-white" href="{% url 'signup' %}">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <!-- Admin Page Button -->
+                    <a class="nav-link btn btn-secondary text-white" href="/admin/">Admin</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+   <!-- Landing Section -->
+<header class="landing-section">
+    <div class="overlay"></div>
+    <div class="landing-text">One Earth Farm</div>
+    <div class="landing-subline">A call for unity in preserving our planet through organic methods under the One Earth Farm</div>
+</header>
+
+<section id="about" class="scroll-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-4 text-white">About Us</h2>
+        <p class="text-center text-white mb-5">We provide innovative solutions for waste management, ensuring a cleaner and greener environment.</p>
+        
+        <div class="row justify-content-center text-white">
+            <!-- Step 1 -->
+            <div class="col-md-4 mb-4 text-center">
+                <div class="hover-box">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040673.png" alt="Collect Waste" class="step-image-white">
+                    <h5>Step 1</h5>
+                    <p>We collect the waste from the users.</p>
+                </div>
+                <div class="arrow">
+                    <img src="https://cdn-icons-png.flaticon.com/512/724/724927.png" alt="Arrow Down" class="arrow-image-white">
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="col-md-4 mb-4 text-center">
+                <div class="hover-box">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3195/3195377.png" alt="Pay Users" class="step-image-white">
+                    <h5>Step 2</h5>
+                    <p>We pay users for segregation.</p>
+                </div>
+                <div class="arrow">
+                    <img src="https://cdn-icons-png.flaticon.com/512/724/724927.png" alt="Arrow Down" class="arrow-image-white">
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="col-md-4 mb-4 text-center">
+                <div class="hover-box">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png" alt="Convert Waste" class="step-image-white">
+                    <h5>Step 3</h5>
+                    <p>The waste is converted into products.</p>
+                </div>
+                <div class="arrow">
+                    <img src="https://cdn-icons-png.flaticon.com/512/724/724927.png" alt="Arrow Down" class="arrow-image-white">
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="col-md-4 mb-4 text-center">
+                <div class="hover-box">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2343/2343777.png" alt="Sell Products" class="step-image-white">
+                    <h5>Step 4</h5>
+                    <p>The products are sold to consumers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Global Background */
+    body {
+        background-color: black; /* Set full-page background to black */
+        color: white; /* Set default text color to white */
+    }
+
+    /* Landing Section Styling */
+    .landing-section {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: url('https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_640.jpg') no-repeat center center/cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+        z-index: 1;
+    }
+
+    .landing-text {
+        position: relative;
+        z-index: 2;
+        color: white;
+        font-size: 4rem;
+        font-weight: bold;
+    }
+
+    .landing-subline {
+        position: relative;
+        z-index: 2;
+        color: #f8f9fa; /* Light gray for contrast */
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin-top: 10px;
+        max-width: 80%; /* Restrict width for better readability */
+    }
+
+    /* Hover Box Styling */
+    .hover-box {
+        background-color: rgba(255, 255, 255, 0.1); /* Transparent white background for blending */
+        border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border for contrast */
+        border-radius: 15px; /* Rounded corners */
+        padding: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+        position: relative;
+    }
+
+    .hover-box:hover {
+        transform: scale(1.1); /* Slightly enlarge on hover */
+        box-shadow: 0 8px 15px rgba(255, 255, 255, 0.2); /* Add shadow on hover */
+    }
+
+    .hover-box h5 {
+        font-weight: bold;
+        color: white; /* White text for better readability */
+        margin-top: 15px;
+    }
+
+    .hover-box p {
+        color: #cfcfcf; /* Light gray text for muted look */
+    }
+
+    /* White Step Image Styling */
+    .step-image-white {
+        filter: invert(100%); /* Converts the image to white */
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
+    }
+
+    /* Arrow Styling */
+    .arrow {
+        margin-top: 10px;
+    }
+
+    .arrow-image-white {
+        filter: invert(100%); /* Converts the arrow to white */
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Section Styling */
+    #about {
+        background: black; /* Set background to black */
+        color: white; /* White text for better readability */
+        padding: 60px 0;
+    }
+</style>
+
+
+ <!-- Services Section -->
+ <section id="services" class="scroll-section py-5" style="background-color: black;">
+    <div class="container">
+        <h2 class="text-center mb-4 text-white" style="font-size: 3rem; font-weight: bold;">Our Services</h2>
+        <div class="row justify-content-center">
+            <!-- Buyers Button -->
+            <div class="col-6 col-md-3 text-center mb-3">
+                <a href="{% url 'login' %}" class="btn btn-light w-100 bigger-button">Buyers</a>
+            </div>
+            <!-- Sellers Button -->
+            <div class="col-6 col-md-3 text-center mb-3">
+                <a href="{% url 'login' %}" class="btn btn-light w-100 bigger-button">Sellers</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Heading Styling */
+    #services h2 {
+        font-size: 3rem; /* Larger heading size */
+        font-weight: bold;
+        color: #28a745; /* Green color for the heading */
+        text-transform: uppercase; /* Make the heading uppercase */
+        letter-spacing: 2px; /* Add spacing between letters */
+    }
+
+    /* Bigger Buttons */
+    .bigger-button {
+        height: 140px; /* Slightly increased button height */
+        font-size: 1.8rem; /* Larger text size */
+        background-color: #28a745 !important; /* Green background for buttons */
+        color: white !important; /* White text for contrast */
+        border: 2px solid #28a745; /* Add a green border */
+        border-radius: 10px; /* Rounded corners for buttons */
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Smooth hover effect */
+    }
+
+    /* Hover Effect */
+    .bigger-button:hover {
+        transform: scale(1.1); /* Slightly enlarge button on hover */
+        box-shadow: 0 10px 20px rgba(40, 167, 69, 0.4); /* Add shadow on hover */
+        background-color: white !important; /* White background on hover */
+        color: #28a745 !important; /* Green text on hover */
+        border-color: white; /* Change border to white on hover */
+    }
+</style>
+    <!-- Footer Section -->
+<footer class="py-5" style="background-color: black; color: white;">
+    <div class="container">
+        <div class="row">
+            <!-- About Us -->
+            <div class="col-md-4 mb-3">
+                <h5>About One Earth Farm</h5>
+                <p>
+                    One Earth Farm is dedicated to providing innovative waste management solutions. 
+                    Our mission is to create a cleaner, greener environment and .
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-md-4 mb-3">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#about" style="color: white; text-decoration: none;">About Us</a></li>
+                    <li><a href="#services" style="color: white; text-decoration: none;">Our Services</a></li>
+                    <li><a href="#contact" style="color: white; text-decoration: none;">Contact Us</a></li>
+                    <li><a href="#faq" style="color: white; text-decoration: none;">FAQs</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact & Social Links -->
+            <div class="col-md-4 mb-3">
+                <h5>Contact Us</h5>
+                <p>
+                    Email: <a href="mailto:info@oneearthfarm.com" style="color: white;">oneearthfarm@gmail.com</a><br>
+                    Phone: XXXXXXXXXX
+                </p>
+                <h5>Follow Us</h5>
+                <div>
+                    <a href="https://facebook.com" target="_blank" style="color: white; text-decoration: none; margin-right: 10px;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="24">
+                    </a>
+                    <a href="https://twitter.com" target="_blank" style="color: white; text-decoration: none; margin-right: 10px;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" width="24">
+                    </a>
+                    <a href="https://instagram.com" target="_blank" style="color: white; text-decoration: none; margin-right: 10px;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="24">
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" style="color: white; text-decoration: none;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="24">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <hr style="border-color: white;">
+
+        <!-- Bottom Footer -->
+        <div class="row">
+            <div class="col text-center">
+                <p>&copy; 2025 One Earth Farm. copy Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Change navbar background color and shadow on scroll
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

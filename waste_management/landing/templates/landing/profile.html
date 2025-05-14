@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Waste Management System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            min-height: 100vh;
+        }
+        .profile-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            box-shadow: 0 8px 15px rgba(255, 255, 255, 0.1);
+        }
+        .profile-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .profile-info {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        .info-label {
+            color: #007bff;
+            font-weight: bold;
+        }
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 1rem;
+        }
+        .navbar-brand {
+            color: white !important;
+            font-weight: bold;
+        }
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+        .nav-link:hover {
+            color: white !important;
+        }
+        .btn-custom {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 10px auto;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .btn-custom:active {
+            transform: scale(1);
+        }
+        .dashboard-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            height: 100%;
+        }
+        .stat-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #28a745;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .table {
+            color: white;
+        }
+        .table thead th {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        .table td, .table th {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">OneEarthFarm</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <h2>Welcome, {{ username }}!</h2>
+            <p class="text-muted">Your {{ role }} Profile</p>
+        </div>
+        
+        <div class="profile-info">
+            <div class="mb-3">
+                <span class="info-label">Username:</span>
+                <span>{{ username }}</span>
+            </div>
+            <div class="mb-3">
+                <span class="info-label">City:</span>
+                <span>{{ city }}</span>
+            </div>
+            <div class="mb-3">
+                <span class="info-label">Role:</span>
+                <span>{{ role }}</span>
+            </div>
+        </div>
+
+        {% if role == 'Buyer' %}
+        <div class="profile-info">
+            <h4>Buyer Dashboard</h4>
+            <p>Here you can view and manage your waste purchases.</p>
+            <!-- Buttons added for Buyer Dashboard -->
+            <a href="{% url 'organic_products' %}" class="btn-custom">Organic Products</a>
+            <a href="{% url 'organic_manures' %}" class="btn-custom">Organic Manures</a>
+        </div>
+        {% else %}
+        <div class="profile-info">
+            <h4>Seller Dashboard</h4>
+            <p>Here you can manage your waste listings and sales.</p>
+            <!-- Add seller-specific features here -->
+        </div>
+        {% endif %}
+ 
+        {% if role == 'Seller' %}
+        <div class="container mt-5">
+            <h1>Sell a Product</h1>
+            <form method="POST" action="{% url 'sell_product' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="product_type" class="form-label">Product Type</label>
+                    <select name="product_type" id="product_type" class="form-control" required>
+                        <option value="" disabled selected>Select a product type</option>
+                        <option value="compost">Compost</option>
+                        <option value="vermicompost">Vermicompost</option>
+                        <option value="cow_dung">Cow Dung</option>
+                        <option value="poultry_manure">Poultry Manure</option>
+                        <option value="garden_waste">Garden Waste</option>
+                        <option value="kitchen_waste">Kitchen Waste</option>
+                        <option value="agricultural_waste">Agricultural Waste</option>
+                        <option value="other_organic">Other Organic Waste</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Quantity (kg)</label>
+                    <input type="number" name="quantity" id="quantity" class="form-control" placeholder="Enter quantity in kg" required>
+                </div>
+                <div class="mb-3">
+                    <label for="price_per_kg" class="form-label">Price per kg (₹)</label>
+                    <input type="number" name="price_per_kg" id="price_per_kg" class="form-control" value="10" readonly>
+                </div>
+                <button type="submit" class="btn btn-primary">Sell a Product</button>
+            </form>
+        </div>
+        {% endif %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

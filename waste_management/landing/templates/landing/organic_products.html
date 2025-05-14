@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Products</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: black; /* Set background to black */
+            color: white; /* Set text color to white */
+        }
+        .card img {
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+        }
+        .card {
+            background-color: #333; /* Dark background for cards */
+            color: white; /* White text for cards */
+        }
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Organic Products</h1>
+        
+        <!-- Top Images Section -->
+        <div class="top-images">
+            <img src="https://www.yuvabiotech.com/assets/img/organic-manure-banner.jpg" alt="Organic Manure 2">
+        </div>
+
+        <!-- Products Section -->
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description }}</p>
+                        <p><strong>Price:</strong> ₹{{ product.price }}</p>
+                        <p><strong>Stock:</strong> {{ product.stock }} units</p>
+                        <a href="{% url 'buynow' product_type='product' product_name=product.name %}" class="btn btn-success w-100">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
