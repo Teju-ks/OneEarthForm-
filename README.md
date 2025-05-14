@@ -129,3 +129,32 @@ Add dashboards for buyers and sellers.
 Include advanced analytics for waste tracking.
 
 Integrate OneEarthForm, an ML-based nutrient predictor and crop recommender.
+
+
+## SnapShorts:
+
+![Screenshot 2025-04-30 095752](https://github.com/user-attachments/assets/0f7ded6e-9690-4df3-85ad-96f80849d3d2)
+
+![Screenshot 2025-04-30 095801](https://github.com/user-attachments/assets/e5d206a8-71e4-4b3b-902e-3b8a16868411)
+
+![Screenshot 2025-04-30 095808](https://github.com/user-attachments/assets/38a5f38a-4260-4f1f-aaec-959a2f1f7588)
+
+![Screenshot 2025-04-30 095847](https://github.com/user-attachments/assets/a59c3fc8-bb80-4bed-b4c8-e2f847ebacd8)
+
+![Screenshot 2025-04-30 095900](https://github.com/user-attachments/assets/13ccd0f1-9739-40fa-9b32-713f42c97dc8)
+
+![Screenshot 2025-04-30 100011](https://github.com/user-attachments/assets/dd17741e-7848-4cb4-b3e9-6c65df17eda2)
+
+![Screenshot 2025-04-30 100023](https://github.com/user-attachments/assets/6f2951f1-a824-4796-a20e-2214fa851d8f)
+
+![Screenshot 2025-04-30 100046](https://github.com/user-attachments/assets/4dbb40dc-563e-4411-810b-6cf91786710e)
+
+  ![WhatsApp Image 2025-05-14 at 21 58 46_aec7f161](https://github.com/user-attachments/assets/b01bfbc2-b8b2-4f24-a825-1d0332c1339e)
+
+
+
+
+
+
+
+
